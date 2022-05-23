@@ -16,7 +16,17 @@ export const authService = {
      * @return null if credentials are incorrect and admin entity in opposite case
      */
     async checkCredentials(email: string, password: string): Promise<AdminDBType | null> {
-        return null
+        let user = await adminsRepository.findByEmail(email)
+        if (!user) {
+            return null
+        }
+        let result = await bcrypt.compare(password, user.passwordHash)
+        if (result) {
+            return user
+        }
+        return  null
+
+
     },
     async generateHash(password: string) {
         const hash = await bcrypt.hash(password, 10)
