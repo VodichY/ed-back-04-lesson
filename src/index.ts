@@ -7,7 +7,7 @@ import {feedbacksRouter} from './routes/feedbacks/feedbacks-router'
 const app = express()
 app.use(express.json())
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3000
 
 app.use('/admins', adminsRouter)
 app.use('/auth', authRouter)
