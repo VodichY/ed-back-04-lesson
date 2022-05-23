@@ -25,8 +25,6 @@ export const authService = {
             return user
         }
         return  null
-
-
     },
     async generateHash(password: string) {
         const hash = await bcrypt.hash(password, 10)
