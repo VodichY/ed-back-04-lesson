@@ -11,6 +11,9 @@ feedbacksRouter
             const newProduct = await feedbacksService.sendFeedback(req.body.comment, req.admin!._id)
             res.status(201).send(newProduct)
         })
+    /**
+     * End point for superadmin
+     */
     .get('/', superAdminAuthMiddleware, async (req, res) => {
         const users = await feedbacksService
             .allFeedbacks()
