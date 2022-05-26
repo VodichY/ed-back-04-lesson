@@ -23,7 +23,6 @@ export const adminsRepository = {
     },
     async findByEmail(email: string): Promise<AdminDBType | null> {
         const user = await adminsCollection.findOne({email: email})
-
         return user
     }
 }
