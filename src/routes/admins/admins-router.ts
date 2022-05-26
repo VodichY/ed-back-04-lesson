@@ -7,8 +7,7 @@ export const adminsRouter = Router({})
 adminsRouter
     .use(superAdminAuthMiddleware)
     .get('/', async (req: Request, res: Response) => {
-        const users = await adminsService
-            .getAllAdmins()
+        const users = await adminsService.getAllAdmins()
         res.send(users)
     })
     .post('/',
