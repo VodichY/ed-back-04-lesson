@@ -55,12 +55,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/users",
+							"raw": "{{BASE_URL}}/admins",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"users"
+								"admins"
 							]
 						}
 					},
