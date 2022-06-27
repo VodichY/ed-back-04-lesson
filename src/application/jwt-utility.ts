@@ -9,7 +9,7 @@ export const jwtUtility = {
      * @return Returns JWT-token
      */
     async createJWT(user: AdminDBType) {
-        const payLoad = {userId: user._id};
+        const payLoad = {adminId: user._id};
         const secretKey = settings.JWT_SECRET;
         const options: SignOptions = {
             expiresIn: '1h'
@@ -19,10 +19,13 @@ export const jwtUtility = {
     },
     async extractAdminIdFromToken(token: string): Promise<ObjectId | null> {
         try {
-            const result: any = jwt.verify(token, settings.JWT_SECRET)
-            return new ObjectId(result.adminId)
+            const result: any = jwt.verify(token, settings.JWT_SECRET);
+            if(!result.adminId) {
+                return null;
+            }
+            return new ObjectId(result.adminId);
         } catch (error) {
-            return null
+            return null;
         }
     }
 }
